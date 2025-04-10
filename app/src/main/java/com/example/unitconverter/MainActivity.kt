@@ -20,6 +20,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -31,9 +32,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.unitconverter.ui.theme.UnitConverterTheme
 import kotlin.math.roundToInt
 
@@ -67,6 +73,12 @@ fun UnitConverter() {
     val conversionFactor = remember { mutableStateOf(1.00) }
     val oConversionFactor = remember { mutableStateOf(1.00) }
 
+    val CustomTextStyle = TextStyle(
+        fontFamily = FontFamily.Cursive,
+        fontSize = 24.sp,
+        color = Color.Magenta
+    )
+
     fun convertUnits() {
         val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0
         val result = (inputValueDouble * conversionFactor.value * 100.0 / oConversionFactor.value).roundToInt() / 100.0
@@ -78,7 +90,12 @@ fun UnitConverter() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Unit Converter")
+        Text("Unit Converter",
+            style = MaterialTheme.typography.headlineSmall.copy(
+                color = Color.Blue,          // 파란색 적용
+                fontWeight = FontWeight.Bold // 굵기 설정
+            )
+        )
 
         ReusableSpacer(20)
         OutlinedTextField(
@@ -161,7 +178,9 @@ fun UnitConverter() {
                 }
             }
         }
-        Text("Result: $outputValue $outputUnit")
+        Text("Result: $outputValue $outputUnit",
+            style = MaterialTheme.typography.titleMedium
+            )
     }
 }
 
