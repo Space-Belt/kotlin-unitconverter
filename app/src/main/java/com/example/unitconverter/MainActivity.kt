@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -54,9 +56,9 @@ fun UnitConverter() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Unit Converter", modifier = Modifier.padding(horizontal = 100.dp, vertical = 100.dp))
+        Text("Unit Converter")
 
-        ReusableSpacer(1000)
+        ReusableSpacer(100)
         OutlinedTextField(
             modifier = Modifier.padding(),
             value = "",
@@ -68,11 +70,24 @@ fun UnitConverter() {
                     Text("선택")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "아래 화살표" )
                 }
+                DropdownMenu(expanded = false, onDismissRequest = {/* 드롭다운 실행시 */}) {
+                    DropdownMenuItem(text = {Text("cm")}, onClick = {})
+                    DropdownMenuItem(text = {Text("m")}, onClick = {})
+                    DropdownMenuItem(text = {Text("mm")}, onClick = {})
+                    DropdownMenuItem(text = {Text("CM")}, onClick = {})
+                }
             }
+            Spacer(modifier = Modifier.width(16.dp))
             Box {
                 Button(onClick = { }) {
                     Text("선택")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "아래 화살표" )
+                }
+                DropdownMenu(expanded = true, onDismissRequest = {/* 드롭다운 실행시 */}) {
+                    DropdownMenuItem(text = {Text("cm")}, onClick = {})
+                    DropdownMenuItem(text = {Text("m")}, onClick = {})
+                    DropdownMenuItem(text = {Text("mm")}, onClick = {})
+                    DropdownMenuItem(text = {Text("CM")}, onClick = {})
                 }
             }
         }
