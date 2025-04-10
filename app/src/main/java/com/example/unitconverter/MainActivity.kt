@@ -5,11 +5,16 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -43,10 +48,22 @@ fun UnitConverter() {
               //String 받아서 -> Unit
             },
             )
+        DropdownMenuItem(
+            onClick = {},
+            text = {Text("아하아")},
+        )
         Row {
-            val context = LocalContext.current
-            Button(onClick = { Toast.makeText(context, "고마워요 클릭", Toast.LENGTH_LONG).show() }) {
-                Text("클릭하세요!")
+            Box {
+                Button(onClick = { }) {
+                    Text("선택")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "아래 화살표" )
+                }
+            }
+            Box {
+                Button(onClick = { }) {
+                    Text("선택")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "아래 화살표" )
+                }
             }
         }
         Text("Result:")
